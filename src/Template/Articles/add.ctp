@@ -5,12 +5,12 @@
  */
 ?>
 <?php
-$urlToCarsAutocompletedemoJson = $this->Url->build([
+$urlToObecCitiesAutocompletedemoJson = $this->Url->build([
     "controller" => "ObecCities",
     "action" => "findObecCities",
     "_ext" => "json"
         ]);
-echo $this->Html->scriptBlock('var urlToAutocompleteAction = "' . $urlToCarsAutocompletedemoJson . '";', ['block' => true]);
+echo $this->Html->scriptBlock('var urlToAutocompleteAction = "' . $urlToObecCitiesAutocompletedemoJson . '";', ['block' => true]);
 echo $this->Html->script('Articles/add_edit/obecCityAutocomplete', ['block' => 'scriptBottom']);
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">

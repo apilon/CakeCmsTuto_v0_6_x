@@ -18,17 +18,23 @@ class OkresCountiesController extends AppController {
         $this->Auth->allow(['getByKrajRegion', 'add', 'edit', 'delete']);
     }
 
-    
     public function getByKrajRegion() {
         $kraj_region_id = $this->request->query('kraj_region_id');
 
         $okresCounties = $this->OkresCounties->find('all', [
             'conditions' => ['OkresCounties.kraj_region_id' => $kraj_region_id],
         ]);
-        $this->set('okresCounties', $okresCounties);
-        $this->set('_serialize', ['okresCounties']);
+        /*        $this->set('okresCounties', $okresCounties);
+                  $this->set('_serialize', ['okresCounties']);
+         */
+        $data = '';
+        foreach ($okresCounties as $okresCounty) {
+            $data .= '<option value="' . $okresCounty->id . '">' . $okresCounty->nazev . '</option>';
+        }
+        $this->autoRender = false; // ligne ajoutée
+        echo $data;
     }
-    
+
     /**
      * Index method
      *
